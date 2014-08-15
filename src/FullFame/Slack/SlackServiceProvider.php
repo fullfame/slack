@@ -19,7 +19,7 @@ class SlackServiceProvider extends ServiceProvider {
      */
     public function boot() {
 
-        $this->package('full-fame/slack');
+        $this->package('fullfame/slack');
 
     }
 
