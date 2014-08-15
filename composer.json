@@ -1,0 +1,21 @@
+{
+    "name": "full-fame/slack",
+    "description": "",
+    "authors": [
+        {
+            "name": "Jason Suave",
+            "email": "jason@fullfame.be"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*",
+        "guzzlehttp/guzzle": "~4.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "FullFame\\Slack": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
