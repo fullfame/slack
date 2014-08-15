@@ -2,6 +2,10 @@
 
 use GuzzleHttp\Client as Guzzle;
 
+/**
+ * Class SlackClient
+ * @package FullFame\Slack
+ */
 class SlackClient {
 
   /**
@@ -54,21 +58,25 @@ class SlackClient {
 
   }
 
-  /**
-   * Sends a message to a Slack channel
-   *
-   * @param string $message The message to send
-   * @param string $channel An optional non-default channel
-   * @param string $username An optional non-default username
-   * @return void
-   */
-  public function send($message, $channel = null, $username = null) {
+    /**
+     * Sends a message to a Slack channel
+     *
+     * @param array $payload
+     * @throws \Exception
+     * @internal param string $message The message to send
+     * @internal param string $channel An optional non-default channel
+     * @internal param string $username An optional non-default username
+     * @return void
+     */
+  public function send($message, $channel = null, $username = null, $overrides = []) {
 
-    $payload = json_encode([
-      'text' => $message,
-      'channel' => $channel ?: $this->defaultChannel,
-      'username' => $username ?: $this->defaultUsername,
-    ]);
+      $payload = [
+          'text'     => $message,
+          'channel'  => $channel ? : $this->defaultChannel,
+          'username' => $username ? : $this->defaultUsername,
+      ];
+      $payload = array_merge($payload, $overrides);
+      $payload = json_encode($payload);
     
     $this->client->post($this->endpoint, ['body' => $payload]);
 
